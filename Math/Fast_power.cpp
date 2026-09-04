@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int M=998244353;
+const int M=1145141;
 ll b,p;
 
 ll fastpow(ll b,ll p){
