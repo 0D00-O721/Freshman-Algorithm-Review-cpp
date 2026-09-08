@@ -6,16 +6,12 @@ ll b,p;
 
 ll fastpow(ll b,ll p){
     if(!p) return 1;
-    ll s=1;
-    while(p>1){
-        if(p&1){
-            s=(s*b)%M;
-            p--;
-        }
-        b=(b*b)%M;
+    ll k=1;
+    while(p){
+        if(p&1) k=(k*b)%M;
         p>>=1;
-    }
-    return (s*b)%M;
+        b=(b*b)%M;
+    }return k;
 }
 
 int main(){
