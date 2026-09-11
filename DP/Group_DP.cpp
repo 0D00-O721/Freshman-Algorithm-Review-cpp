@@ -3,7 +3,7 @@ using namespace std;
 const int N=1e3+10;
 vector<pair<int,int>> g[114];
 bool flag[114];
-int dp[N][N];
+int dp[N];
 int n,m,k;
 
 int main(){
@@ -20,21 +20,17 @@ int main(){
             break;
         }
     }
-    //printf("k=%d\n",k);
 
     for(int i=1;i<=k;i++){
-        //printf("第%d组\n",i);
-        for(auto s:g[i]){
-            int w = s.first;
-            int v = s.second;
-            //printf("{%d,%d}\n",w,v);
-            for(int j = 1; j <= m; j++){
-                dp[i][j]=max(dp[i][j],dp[i-1][j]);
-                if(j>=w) dp[i][j] = max(dp[i][j], dp[i-1][j-w]+v);
+        for(int j=m;j>0;j--){
+            for(auto it:g[i]){
+                int w=it.first;
+                int v=it.second;
+                if(j>=w) dp[j]=max(dp[j],dp[j-w]+v);
             }
         }
     }
 
-    printf("%d",dp[k][m]);
+    printf("%d",dp[m]);
     return 0;
 }
